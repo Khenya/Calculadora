@@ -10,39 +10,38 @@ export default function CalculatorScrean() {
   return (
     <View style={styles.background}>
       <View style={styles.containerResult} >
-        <Text adjustsFontSizeToFit numberOfLines={1} style={styles.mainResult}>{result}</Text>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.subResult}>{operacion}</Text>
+        <Text adjustsFontSizeToFit numberOfLines={1} style={styles.mainResult}>{result}</Text>
       </View>
       <View style={styles.buttonsContainer} >
         <View style={styles.row}>
-          <CButton textButton='AC' bgColor={colors.yellow} action={reset}/>
-          <CButton textButton='(' bgColor={colors.pink}/>
-          <CButton textButton=')' bgColor={colors.pink}/>
-          <CButton textButton='÷' bgColor={colors.pink} action={() => { builOperation('/') }}/>
+          <CButton textButton='AC' bgColor={colors.white} action={reset}/>
+          <CButton textButton='+/-' bgColor={colors.white}/>
+          <CButton textButton='%' bgColor={colors.white}/>
+          <CButton textButton='÷' bgColor={colors.blueOperationButtonL} action={() => { builOperation('/') }}/>
         </View>
         <View style={styles.row}>
-          <CButton textButton='7' bgColor={colors.pinkButton} action={() => { builOperation('7') }}/>
-          <CButton textButton='8' bgColor={colors.pinkButton} action={() => { builOperation('8') }}/>
-          <CButton textButton='9' bgColor={colors.pinkButton} action={() => { builOperation('9') }}/>
-          <CButton textButton='x' bgColor={colors.pink} action={() => { builOperation('*') }}/>
+          <CButton textButton='7' bgColor={colors.white} action={() => { builOperation('7') }}/>
+          <CButton textButton='8' bgColor={colors.white} action={() => { builOperation('8') }}/>
+          <CButton textButton='9' bgColor={colors.white} action={() => { builOperation('9') }}/>
+          <CButton textButton='x' bgColor={colors.blueOperationButtonL} action={() => { builOperation('*') }}/>
         </View>
         <View style={styles.row}>
-          <CButton textButton='4' bgColor={colors.pinkButton} action={() => { builOperation('4') }}/>
-          <CButton textButton='5' bgColor={colors.pinkButton} action={() => { builOperation('5') }}/>
-          <CButton textButton='6' bgColor={colors.pinkButton} action={() => { builOperation('6') }}/>
-          <CButton textButton='-' bgColor={colors.pink} action={() => { builOperation('-') }}/>
+          <CButton textButton='4' bgColor={colors.white} action={() => { builOperation('4') }}/>
+          <CButton textButton='5' bgColor={colors.white} action={() => { builOperation('5') }}/>
+          <CButton textButton='6' bgColor={colors.white} action={() => { builOperation('6') }}/>
+          <CButton textButton='-' bgColor={colors.blueOperationButtonL} action={() => { builOperation('-') }}/>
         </View>
         <View style={styles.row}>
-          <CButton textButton='1' bgColor={colors.pinkButton} action={() => { builOperation('1') }}/>
-          <CButton textButton='2' bgColor={colors.pinkButton} action={() => { builOperation('2') }}/>
-          <CButton textButton='3' bgColor={colors.pinkButton} action={() => { builOperation('3') }}/>
-          <CButton textButton='+' bgColor={colors.pink} action={() => { builOperation('+') }}/>
+          <CButton textButton='1' bgColor={colors.white} action={() => { builOperation('1') }}/>
+          <CButton textButton='2' bgColor={colors.white} action={() => { builOperation('2') }}/>
+          <CButton textButton='3' bgColor={colors.white} action={() => { builOperation('3') }}/>
+          <CButton textButton='+' bgColor={colors.blueOperationButtonL} action={() => { builOperation('+') }}/>
         </View>
         <View style={styles.row}>
-          <CButton textButton='0' bgColor={colors.pinkButton} action={() => { builOperation('0') }}/>
-          <CButton textButton='.' bgColor={colors.pinkButton} action={() => { builOperation('.') }}/>
-          <CButton textButton='←' bgColor={colors.pinkButton} action={removeLast}/>
-          <CButton textButton='=' bgColor={colors.pink} action={evaluateOperacion}/>
+          <CButton textButton='0' bgColor={colors.white} action={() => { builOperation('0') }}/>
+          <CButton textButton='.' bgColor={colors.white} action={() => { builOperation('.') }}/>
+           <CButton textButton='=' bgColor={colors.blue} customStyle={styles.buttonEqual} action={evaluateOperacion}/>
         </View>
       </View>
     </View>

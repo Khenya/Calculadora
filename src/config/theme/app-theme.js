@@ -4,11 +4,18 @@ export const colors = {
   // modo claro
   blueOperationButtonL: "#C5DAE7",
   white: "#EBEEEE",
-  pinkLight: "#EDE5E6",
-  pinkButton: "#C5DAE7",
-
   blue: '#0093FF',
   black: "#000000",
+  light: {
+    background: "#EBEEEE",
+    buttonText: "#000000",
+    resultText: "#000000"
+  },
+  dark: {
+    background: "#000000",
+    buttonText: "#EBEEEE",
+    resultText: "#FFFFFF"
+  },
 };
 
 export const styles = StyleSheet.create({
@@ -87,4 +94,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 5,
   },
+  switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 60,
+  }
 });

@@ -34,11 +34,13 @@ Calculadora/
 │   ├── assets/
 │   │   └── images/
 │   ├── components/
-│   │    └── CButton.js
+│   │    |── CButton.js
 │   │    └── ChangeMode.js
 │   ├── config/
 │   │   └── theme/
-│   │   │   └── app-theme.js
+│   │       |── app-theme.js
+│   │       |── ThemeContext.js
+│   │       └── Themes.js
 │   ├── hooks/
 │   │   ├── useOperation.js
 │   ├── plaginas/

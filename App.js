@@ -1,7 +1,12 @@
-import CalculatorScrean from './src/screen/CalculatorScreen'
+import React from 'react';
+
+import CalculatorScreen from './src/screen/CalculatorScreen'
+import { ThemeProvider } from './src/config/theme/ThemeContext';
 
 export default function App() {
   return (
-    <CalculatorScrean/>
+    <ThemeProvider>
+      <CalculatorScreen />
+    </ThemeProvider>
   );
 }

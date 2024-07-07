@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, View } from 'react-native';
-
 import { styles } from '../config/theme/app-theme';
 
 const ChangeMode = ({ isDarkMode, toggleTheme }) => {
@@ -13,4 +12,5 @@ const ChangeMode = ({ isDarkMode, toggleTheme }) => {
     </View>
   );
 };
+
 export default ChangeMode;

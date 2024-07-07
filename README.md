@@ -24,6 +24,8 @@ Esta es una aplicación de calculadora desarrollada en React Native con Expo. La
 - Para abrir el proyecto solo nesecitas escanear el qr desde tu celular android o iSO 
   - Para abrir la aplicación desde Android dedes tener la aplicacion **Expo Go**, ingresar a la misma y escanear el código QR que aparece en tu terminal despues de realizar el paso 3.
   - Para abrir la aplicación desde iOS necesitas tener la aplicacion **Expo Go**, ingresar a la camar de tu celular, escanear el código QR que aparece en tu terminal despues de realizar el paso 3, el cual te dara un enlase que te redirecciona a la aplicación **Expo Go**.
+  - Para abrir desde un emulador android, despues de realizar el paso 3 debes presionar la tecla **a**
+  - Para abrir desde un emulador de iOS, despues de realizar el paso 3 debes presionar la tecla **i**. (Para esta opción necesitas tener una Mac)
 
 ## Estructura del Repositorio
 ```

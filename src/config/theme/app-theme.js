@@ -1,16 +1,17 @@
 import { StyleSheet } from "react-native";
 
 export const colors = {
-  // modo claro
   blueOperationButtonL: "#C5DAE7",
   white: "#EBEEEE",
   blue: '#0093FF',
   black: "#000000",
+  // modo claro
   light: {
     background: "#EBEEEE",
     buttonText: "#000000",
     resultText: "#000000"
   },
+  // modo oscuro
   dark: {
     background: "#000000",
     buttonText: "#EBEEEE",
@@ -21,7 +22,7 @@ export const colors = {
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.white
   },
   containerResult: {
     flex: 1,
@@ -30,8 +31,7 @@ export const styles = StyleSheet.create({
     borderBottomStartRadius: 50,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingVertical: 10,
-
+    paddingVertical: 10
   },
   buttonsContainer: {
     flex: 2,
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 60,
     fontWeight: "500",
-    textAlign: "right",
+    textAlign: "right"
   },
   buttonEqual: {
     height: 80,
@@ -53,16 +53,16 @@ export const styles = StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
      shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 5
   },
   subResult: {
     color: colors.blue,
     fontSize: 35,
-    textAlign: "right",
+    textAlign: "right"
   },
   button: {
     height: 80,
@@ -75,12 +75,12 @@ export const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     // Sombra para Android
-    elevation: 5,
+    elevation: 5
   },
   buttonText: {
     color: colors.black,
@@ -92,12 +92,12 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 5,
+    marginVertical: 5
   },
   switchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 60,
+    marginVertical: 60
   }
 });

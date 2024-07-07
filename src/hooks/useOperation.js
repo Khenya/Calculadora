@@ -1,16 +1,17 @@
 import { useState } from "react";
+
 import { c_evaluate } from "../plaginas/mathPlagin";
 import { operators } from '../utils/OperationUtil';
 
 const useOperation = () => {
   const [result, setResult] = useState('0');
   const [operacion, setOperacion] = useState('');
-
+  // RESET la operacion
   const reset = () => {
     setResult('0');
     setOperacion('');
   };
-
+  // mensajes de error
   const evaluateOperacion = () => {
     if (operacion === '') return;
     try {
@@ -42,7 +43,7 @@ const useOperation = () => {
 
     setOperacion(operacion + text);
   };
-
+  // calcular el porcentaje
   const calculatePercentage = () => {
     if (operacion === '') return;
     try {
@@ -56,7 +57,7 @@ const useOperation = () => {
       setOperacion('');
     }
   };
-
+  // boton +/-
   const toggleSign = () => {
     if (result === '0') return;
     const newResult = String(parseFloat(result) * -1);

@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
+
 import { styles } from '../config/theme/app-theme';
 import { colors } from '../config/theme/app-theme';
 import { CButton } from '../components/CButton';
+import ChangeMode from '../components/ChangeMode';
 import useOperation from '../hooks/useOperation';
-import ThemeSwitch from '../components/ChangeMode';
 
 export default function CalculatorScreen() {
+  // constantes de las operaciones
   const { reset, result, operacion, builOperation, evaluateOperacion, calculatePercentage, toggleSign } = useOperation();
+  // constantes del tema
   const [isDarkMode, setIsDarkMode] = useState(false);
-
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   return (
     <View style={styles.background}>
-      <ThemeSwitch isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <ChangeMode isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <View style={styles.containerResult}>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.subResult}>{operacion}</Text>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.mainResult}>{result}</Text>

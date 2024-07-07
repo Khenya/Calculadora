@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Pressable, Text } from 'react-native';
+
 import { styles } from '../config/theme/app-theme';
 
 export const CButton = ({ textButton, bgColor, textColor, action, customStyle }) => {

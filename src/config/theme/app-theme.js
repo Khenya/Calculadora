@@ -9,7 +9,7 @@ export const colors = {
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: colors.dark.background
+    backgroundColor: colors.black
   },
   containerResult: {
     flex: 1,

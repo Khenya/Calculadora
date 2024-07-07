@@ -1,8 +1,27 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+
+export const colors = {
+  
+  blue: '#0093FF',
+  black: "#000000",
+  // modo claro
+  light: {
+    background: "#EBEEEE",
+    buttonText: "#000000",
+    blueOperationButton: "#C5DAE7"
+  },
+  // modo oscuro
+  dark: {
+    background: "#000000",
+    buttonText: "#EBEEEE",
+    blueOperationButton: "#003257"
+  },
+};
 
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
+    backgroundColor: colors.dark.background
   },
   containerResult: {
     flex: 1,
@@ -17,6 +36,7 @@ export const styles = StyleSheet.create({
     paddingTop: 20,
   },
   mainResult: {
+    color: colors.blue,
     fontSize: 60,
     fontWeight: "500",
     textAlign: "right",

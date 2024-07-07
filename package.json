@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~51.0.17",
+    "expo": "^52.0.16",
     "expo-status-bar": "~1.12.1",
     "mathjs": "^13.0.2",
     "nativewind": "^2.0.11",

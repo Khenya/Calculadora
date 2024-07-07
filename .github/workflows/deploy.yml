@@ -1,0 +1,62 @@
+name: Build and Deploy Expo Android App
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        type: string
+        required: true
+        default: "New Android Release"
+        description: "Release notes for the build"
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy Android App
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the source code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Install Expo and EAS CLI
+      - name: Install Expo and EAS CLI
+        run: npm install -g expo-cli eas-cli
+
+      # 4. Install dependencies
+      - name: Install project dependencies
+        run: npm install
+
+      # 5. Authenticate with Expo
+      - name: Authenticate with Expo
+        run: eas whoami
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      # 6. Build Android APK/AAB
+      - name: Build Android App
+        run: eas build --platform android --profile production
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      # 7. Download build artifact
+      - name: Download build artifact
+        run: |
+          mkdir -p dist
+          eas build:artifacts --platform android --output dist/
+
+      # 8. Upload APK/AAB to Firebase App Distribution
+      - name: Deploy to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: dist/*.apk
+          releaseNotes: ${{ inputs.release_notes }}

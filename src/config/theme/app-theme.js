@@ -2,20 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const colors = {
   
-  blue: '#0093FF',
+  blue: '#05AFF2',
   black: "#000000",
-  // modo claro
-  light: {
-    background: "#EBEEEE",
-    buttonText: "#000000",
-    blueOperationButton: "#C5DAE7"
-  },
-  // modo oscuro
-  dark: {
-    background: "#000000",
-    buttonText: "#EBEEEE",
-    blueOperationButton: "#003257"
-  },
 };
 
 export const styles = StyleSheet.create({

@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+
 import { lightTheme, darkTheme } from '../theme/Themes';
 
 export const ThemeContext = createContext();

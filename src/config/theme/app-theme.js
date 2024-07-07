@@ -1,32 +1,30 @@
 import { StyleSheet } from "react-native";
 
 export const colors = {
-  blueOperationButtonL: "#C5DAE7",
-  white: "#EBEEEE",
+  
   blue: '#0093FF',
   black: "#000000",
   // modo claro
   light: {
     background: "#EBEEEE",
     buttonText: "#000000",
-    resultText: "#000000"
+    blueOperationButton: "#C5DAE7"
   },
   // modo oscuro
   dark: {
     background: "#000000",
     buttonText: "#EBEEEE",
-    resultText: "#FFFFFF"
+    blueOperationButton: "#003257"
   },
 };
 
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: colors.white
+    backgroundColor: colors.dark.background
   },
   containerResult: {
     flex: 1,
-    backgroundColor: colors.white,
     borderBottomEndRadius: 50,
     borderBottomStartRadius: 50,
     justifyContent: "flex-end",
@@ -38,7 +36,7 @@ export const styles = StyleSheet.create({
     paddingTop: 20
   },
   mainResult: {
-    color: colors.black,
+    color: colors.blue,
     fontSize: 60,
     fontWeight: "500",
     textAlign: "right"
@@ -67,7 +65,6 @@ export const styles = StyleSheet.create({
   button: {
     height: 80,
     width: 80,
-    backgroundColor: colors.white,
     borderRadius: 20,
     justifyContent: "center",
     marginHorizontal: 10,
@@ -83,7 +80,6 @@ export const styles = StyleSheet.create({
     elevation: 5
   },
   buttonText: {
-    color: colors.black,
     fontSize: 30,
     fontWeight: "400",
     textAlign: "center",

@@ -11,8 +11,8 @@ export default function CalculatorScreen() {
   // constantes de las operaciones
   const { reset, result, operacion, builOperation, evaluateOperacion, calculatePercentage, toggleSign } = useOperation();
   // constantes del tema
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleTheme = () => {
+  let [isDarkMode, setIsDarkMode] = useState(false);
+  let toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
@@ -25,32 +25,32 @@ export default function CalculatorScreen() {
       </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.row}>
-          <CButton textButton='AC' bgColor={colors.white} textColor={colors.blue} action={reset} />
-          <CButton textButton='+/-' bgColor={colors.white} textColor={colors.blue} action={toggleSign} />
-          <CButton textButton='%' bgColor={colors.white} textColor={colors.blue} action={calculatePercentage} />
-          <CButton textButton='÷' bgColor={colors.blueOperationButtonL} action={() => { builOperation('/') }} />
+          <CButton textButton='AC' bgColor={colors.dark.background} textColor={colors.blue} action={reset} />
+          <CButton textButton='+/-' bgColor={colors.dark.background} textColor={colors.blue} action={toggleSign} />
+          <CButton textButton='%' bgColor={colors.dark.background} textColor={colors.blue} action={calculatePercentage} />
+          <CButton textButton='÷' bgColor={colors.dark.blueOperationButton} textColor={colors.dark.buttonText} action={() => { builOperation('/') }} />
         </View>
         <View style={styles.row}>
-          <CButton textButton='7' bgColor={colors.white} action={() => { builOperation('7') }} />
-          <CButton textButton='8' bgColor={colors.white} action={() => { builOperation('8') }} />
-          <CButton textButton='9' bgColor={colors.white} action={() => { builOperation('9') }} />
-          <CButton textButton='x' bgColor={colors.blueOperationButtonL} action={() => { builOperation('*') }} />
+          <CButton textButton='7' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('7') }} />
+          <CButton textButton='8' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('8') }} />
+          <CButton textButton='9' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('9') }} />
+          <CButton textButton='x' bgColor={colors.dark.blueOperationButton} textColor={colors.dark.buttonText} action={() => { builOperation('*') }} />
         </View>
         <View style={styles.row}>
-          <CButton textButton='4' bgColor={colors.white} action={() => { builOperation('4') }} />
-          <CButton textButton='5' bgColor={colors.white} action={() => { builOperation('5') }} />
-          <CButton textButton='6' bgColor={colors.white} action={() => { builOperation('6') }} />
-          <CButton textButton='-' bgColor={colors.blueOperationButtonL} action={() => { builOperation('-') }} />
+          <CButton textButton='4' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('4') }} />
+          <CButton textButton='5' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('5') }} />
+          <CButton textButton='6' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('6') }} />
+          <CButton textButton='-' bgColor={colors.dark.blueOperationButton} textColor={colors.dark.buttonText} action={() => { builOperation('-') }} />
         </View>
         <View style={styles.row}>
-          <CButton textButton='1' bgColor={colors.white} action={() => { builOperation('1') }} />
-          <CButton textButton='2' bgColor={colors.white} action={() => { builOperation('2') }} />
-          <CButton textButton='3' bgColor={colors.white} action={() => { builOperation('3') }} />
-          <CButton textButton='+' bgColor={colors.blueOperationButtonL} action={() => { builOperation('+') }} />
+          <CButton textButton='1' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('1') }} />
+          <CButton textButton='2' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('2') }} />
+          <CButton textButton='3' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('3') }} />
+          <CButton textButton='+' bgColor={colors.dark.blueOperationButton} textColor={colors.dark.buttonText} action={() => { builOperation('+') }} />
         </View>
         <View style={styles.row}>
-          <CButton textButton='0' bgColor={colors.white} action={() => { builOperation('0') }} />
-          <CButton textButton='.' bgColor={colors.white} action={() => { builOperation('.') }} />
+          <CButton textButton='0' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('0') }} />
+          <CButton textButton='.' bgColor={colors.dark.background} textColor={colors.dark.buttonText} action={() => { builOperation('.') }} />
           <CButton textButton='=' bgColor={colors.blue} customStyle={styles.buttonEqual} action={evaluateOperacion} />
         </View>
       </View>

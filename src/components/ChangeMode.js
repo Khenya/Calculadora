@@ -13,4 +13,5 @@ const ChangeMode = ({ isDarkMode, toggleTheme }) => {
     </View>
   );
 };
+
 export default ChangeMode;

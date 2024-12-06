@@ -15,10 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v4
-
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -33,15 +31,14 @@ jobs:
 
       - name: Authenticate and configure EAS
         run: |
-          echo "${{ secrets.EXPO_TOKEN }}" | eas login --token
           eas project:init --non-interactive --force
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
       - name: Build APK/AAB
         run: eas build --platform android --profile production
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
 
       - name: Download build artifact
         run: |

@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy Android App
+    name: Build and Deploy to Firebase
     runs-on: ubuntu-latest
 
     steps:
@@ -23,45 +23,28 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: Install project dependencies
-        run: npm install
-
-      - name: Authenticate and configure EAS
+      - name: Authenticate with Expo
         run: |
+          eas login --non-interactive --token ${{ secrets.EXPO_TOKEN }}
           eas project:init --non-interactive --force
+
+      - name: Build AAB
+        run: eas build --platform android --profile production --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build APK/AAB
-        run: |
-          eas build --platform android --profile production
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Fetch build artifact
+      - name: Download Artifact
         run: |
           mkdir -p dist
-          echo "Fetching build artifacts..."
-          ARTIFACTS=$(eas build:list --platform android --status finished --json 2>&1) || {
-            echo "Failed to fetch build list: $ARTIFACTS"
-            exit 1
-          }
-          echo "Build list JSON: $ARTIFACTS"
-          ARTIFACT_URL=$(echo "$ARTIFACTS" | jq -r '.[0].artifacts.buildUrl')
-          if [ -z "$ARTIFACT_URL" ]; then
-            echo "Error: No valid artifact URL found."
-            exit 1
-          fi
-          echo "Downloading artifact from $ARTIFACT_URL"
-          curl -o dist/app.apk "$ARTIFACT_URL"
+          eas build:list --platform android --status finished --json | jq -r '.[0].artifacts.buildUrl' | xargs curl -o dist/app-release.aab
         env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}        
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Deploy to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
@@ -69,5 +52,5 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: dist/app.apk
+          file: dist/app-release.aab
           releaseNotes: ${{ inputs.release_notes }}

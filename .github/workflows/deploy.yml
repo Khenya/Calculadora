@@ -36,13 +36,14 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Build APK/AAB
-        run: eas build --platform android --profile production
+        run: |
+          eas build --platform android --profile production
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Download build artifact
         run: |
-          mkdir -p dist
+          mkdir dist || true   # Maneja el error si el directorio ya existe
           eas build:artifacts --platform android --output dist/
 
       - name: Deploy to Firebase App Distribution

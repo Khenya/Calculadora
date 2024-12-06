@@ -44,17 +44,21 @@ jobs:
       - name: Fetch build artifact
         run: |
           mkdir -p dist
-          ARTIFACTS=$(eas build:list --platform android --status finished --json)
+          echo "Fetching build artifacts..."
+          ARTIFACTS=$(eas build:list --platform android --status finished --json 2>&1) || {
+            echo "Failed to fetch build list: $ARTIFACTS"
+            exit 1
+          }
           echo "Build list JSON: $ARTIFACTS"
           ARTIFACT_URL=$(echo "$ARTIFACTS" | jq -r '.[0].artifacts.buildUrl')
           if [ -z "$ARTIFACT_URL" ]; then
-            echo "Error: No valid artifact URL found"
+            echo "Error: No valid artifact URL found."
             exit 1
           fi
           echo "Downloading artifact from $ARTIFACT_URL"
           curl -o dist/app.apk "$ARTIFACT_URL"
         env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}        
 
       - name: Install jq
         run: sudo apt-get install -y jq

@@ -7,11 +7,11 @@ on:
         type: string
         required: true
         default: "New Android Release"
-        description: "Release notes for the build"
+        description: "Release notes for this build"
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy to Firebase
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -28,11 +28,6 @@ jobs:
 
       - name: Install EAS CLI
         run: npm install -g eas-cli
-
-      - name: Authenticate with Expo
-        run: |
-          eas login --non-interactive --token ${{ secrets.EXPO_TOKEN }}
-          eas project:init --non-interactive --force
 
       - name: Build AAB
         run: eas build --platform android --profile production --non-interactive

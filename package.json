@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native/gradle-plugin": "^0.76.3",
     "expo": "^52.0.16",
     "expo-status-bar": "~1.12.1",
     "mathjs": "^13.0.2",

@@ -41,10 +41,14 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Download build artifact
+      - name: Fetch build artifact
         run: |
-          mkdir dist || true   # Maneja el error si el directorio ya existe
-          eas build:artifacts --platform android --output dist/
+          mkdir -p dist
+          ARTIFACT_URL=$(eas build:list --platform android --status finished --json | jq -r '.[0].artifacts.buildUrl')
+          curl -o dist/app.apk "$ARTIFACT_URL"
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
 
       - name: Deploy to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
@@ -52,5 +56,5 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: dist/*.apk
+          file: dist/app.apk
           releaseNotes: ${{ inputs.release_notes }}

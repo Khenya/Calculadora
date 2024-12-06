@@ -34,19 +34,6 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Download Artifact
-        run: |
-          mkdir -p dist
-          BUILD_URL=$(eas build:list --platform android --status finished --json | jq -r '.[0].artifacts.buildUrl')
-          if [ -z "$BUILD_URL" ]; then
-            echo "Error: No build URL found."
-            exit 1
-          fi
-          echo "Downloading artifact from $BUILD_URL"
-          curl -o dist/app-release.aab "$BUILD_URL"
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
       - name: Deploy to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:

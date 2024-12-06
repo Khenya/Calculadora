@@ -22,6 +22,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a1153b68-7b9d-43b0-8e2b-2aa7e612f7a5"
+      }
+    },
+    "owner": "khenya"
   }
 }

@@ -1,4 +1,4 @@
-name: Build and Deploy Expo Android App
+name: Build and Deploy Android App
 
 on:
   workflow_dispatch:
@@ -15,43 +15,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the source code
+
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # 3. Install Expo and EAS CLI
-      - name: Install Expo and EAS CLI
-        run: npm install -g expo-cli eas-cli
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
 
-      # 4. Install dependencies
       - name: Install project dependencies
         run: npm install
 
-      # 5. Authenticate with Expo
-      - name: Authenticate with Expo
-        run: eas whoami
+      - name: Authenticate and configure EAS
+        run: |
+          echo "${{ secrets.EXPO_TOKEN }}" | eas login --token
+          eas project:init --non-interactive --force
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-      # 6. Build Android APK/AAB
-      - name: Build Android App
+      - name: Build APK/AAB
         run: eas build --platform android --profile production
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      # 7. Download build artifact
+
       - name: Download build artifact
         run: |
           mkdir -p dist
           eas build:artifacts --platform android --output dist/
 
-      # 8. Upload APK/AAB to Firebase App Distribution
       - name: Deploy to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:

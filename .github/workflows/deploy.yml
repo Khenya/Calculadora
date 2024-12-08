@@ -39,6 +39,6 @@ jobs:
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
-          file: ./.my-app.aab
+          file: ./my-app.aab
           groups: testers
-          releaseNotes: "New version deployed via GitHub Actions"
+          releaseNotes: ${{ github.event.inputs.release_notes }}

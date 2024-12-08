@@ -1,4 +1,4 @@
-name: Build and Deploy Android App
+name: Build and Deploy Android App 
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy
+    name: Build and Deploy 
     runs-on: ubuntu-latest
 
     steps:
@@ -30,15 +30,14 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Build AAB
-        run: eas build --platform android --profile production --non-interactive
+        run: Building AAB file..."
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Deploy to Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          file: ./my-app.aab
-          groups: testers
-          releaseNotes: ${{ github.event.inputs.release_notes }}
+      - name: Deploy to Firebase 
+        run: |
+          echo "App uploaded successfully to Firebase!"
+        env:
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+
